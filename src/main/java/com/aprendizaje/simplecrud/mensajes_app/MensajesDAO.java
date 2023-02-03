@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class MensajesDAO {
 
-    public static void crearMensajeDB(Mensajes mensaje){
+    public static int crearMensajeDB(Mensajes mensaje){
         Conexion dbConexion = new Conexion();
 
         try (Connection connexion = dbConexion.get_connnection()){
@@ -19,7 +19,7 @@ public class MensajesDAO {
                 stament.setString(1, mensaje.getMensaje());
                 stament.setString(2, mensaje.getAutorMensaje());
                 stament.executeUpdate();
-                System.out.println("Mensaje Creado con exito 😁!!");
+                return 1;
 
             }catch (SQLException e){
                 System.out.println(e.getMessage());
@@ -27,6 +27,7 @@ public class MensajesDAO {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
+        return 0;
     }
 
     public static ArrayList<Mensajes> leerTodosLosMensajesDB(){
@@ -61,8 +62,26 @@ public class MensajesDAO {
 
     }
 
-    public static void borrarMensajeDB(int idMensaje){
+    public static int borrarMensajeDB(int idMensaje){
+        Conexion conexion = new Conexion();
 
+        try(Connection connection = conexion.get_connnection()){
+            PreparedStatement statement;
+            try {
+                String query = "DELETE FROM mensajes WHERE id_mensaje = ?";
+                statement = connection.prepareStatement(query);
+                statement.setInt(1, idMensaje);
+                statement.executeUpdate();
+                return 1;
+            }catch (SQLException e){
+                System.out.println("No se logró eliminar el mensajes");
+                System.out.println(e.getMessage());
+            }
+        }catch (SQLException e){
+            System.out.println("No se logró eliminar el mensajes");
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
 }

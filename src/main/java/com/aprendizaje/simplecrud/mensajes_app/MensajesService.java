@@ -17,7 +17,10 @@ public class MensajesService {
         registro.setMensaje(contenidoMensaje);
         registro.setAutorMensaje(nombre);
 
-        MensajesDAO.crearMensajeDB(registro);
+        if(MensajesDAO.crearMensajeDB(registro) == 1)
+            System.out.println("Mensaje Creado con exito 😁!!");
+        else
+            System.out.println("Error al crear el mensaje 😔");
     }
 
     public static void listarMensajes(){
@@ -33,7 +36,12 @@ public class MensajesService {
     }
 
     public static void borrarMensaje(){
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el id del mensaje que desea borrar: ");
+        int idMensajeToDelete = scanner.nextInt();
+        if(MensajesDAO.borrarMensajeDB(idMensajeToDelete) == 1)
+            System.out.println("Mensaje eliminado con exito 😁!!");
+        else System.out.println("El mensaje NO fue eliminado 😣");
     }
 
     public static void editarMensaje(){
