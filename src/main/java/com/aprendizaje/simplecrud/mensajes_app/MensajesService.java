@@ -1,5 +1,6 @@
 package com.aprendizaje.simplecrud.mensajes_app;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MensajesService {
@@ -14,13 +15,21 @@ public class MensajesService {
 
         Mensajes registro = new Mensajes();
         registro.setMensaje(contenidoMensaje);
-        registro.setAutor_mensaje(nombre);
+        registro.setAutorMensaje(nombre);
 
         MensajesDAO.crearMensajeDB(registro);
     }
 
     public static void listarMensajes(){
+        ArrayList<Mensajes> mensajesArrayList;
+        mensajesArrayList = MensajesDAO.leerTodosLosMensajesDB();
 
+        for (Mensajes mensajeLeido : mensajesArrayList) {
+            System.out.println("ID: "+mensajeLeido.getIdMensaje());
+            System.out.println("Mensaje: "+mensajeLeido.getMensaje());
+            System.out.println("Autor: "+mensajeLeido.getAutorMensaje());
+            System.out.println("Fecha: "+mensajeLeido.getFechaMensaje()+"\n");
+        }
     }
 
     public static void borrarMensaje(){

@@ -1,7 +1,5 @@
 package com.aprendizaje.simplecrud.mensajes_app;
 
-import javafx.scene.input.Mnemonic;
-
 import java.sql.Connection;
 import java.util.Scanner;
 
@@ -11,7 +9,7 @@ public class Inicio {
     {
         Scanner scanner = new Scanner(System.in);
 
-        int opcion = 0;
+        int opcion;
 
         do {
             System.out.println("------------------------------------------");
@@ -43,14 +41,6 @@ public class Inicio {
 
 
         }while (opcion != 5);
-
-        Connexion connexion = new Connexion();
-
-        try(Connection  cnx = connexion.get_connnection()){
-
-        }catch (Exception e){
-            System.out.println(e);
-        }
 
     }
 }

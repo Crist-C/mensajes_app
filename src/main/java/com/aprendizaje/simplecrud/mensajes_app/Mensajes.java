@@ -15,11 +15,11 @@ public class Mensajes {
         this.fecha_mensjae = fecha_mensjae;
     }
 
-    public int getId_mensaje() {
+    public int getIdMensaje() {
         return id_mensaje;
     }
 
-    public void setId_mensaje(int id_mensaje) {
+    public void setIdMensaje(int id_mensaje) {
         this.id_mensaje = id_mensaje;
     }
 
@@ -35,15 +35,15 @@ public class Mensajes {
         return autor_mensaje;
     }
 
-    public void setAutor_mensaje(String autor_mensaje) {
+    public void setAutorMensaje(String autor_mensaje) {
         this.autor_mensaje = autor_mensaje;
     }
 
-    public String getFecha_mensjae() {
+    public String getFechaMensaje() {
         return fecha_mensjae;
     }
 
-    public void setFecha_mensjae(String fecha_mensjae) {
+    public void setFechaMensaje(String fecha_mensjae) {
         this.fecha_mensjae = fecha_mensjae;
     }
 
