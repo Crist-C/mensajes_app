@@ -45,7 +45,26 @@ public class MensajesService {
     }
 
     public static void editarMensaje(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingresa el id del mensaje que deseas editar: ");
+        int idMensaje = scanner.nextInt();
+        scanner.nextLine();
 
+        System.out.println("Ingresa el nuevo mensaje");
+        String contenidoMensaje = scanner.nextLine();
+
+        System.out.println("Ingresa el nuevo nombre del autor del mensaje:");
+        String nombre = scanner.nextLine();
+
+        Mensajes registro = new Mensajes();
+        registro.setIdMensaje(idMensaje);
+        registro.setMensaje(contenidoMensaje);
+        registro.setAutorMensaje(nombre);
+
+        if( MensajesDAO.actualizarMensajeDB(registro) == 1)
+            System.out.println("Mensaje actualizado con exito");
+        else
+            System.out.println("El mensaje NO fue actualizado");
     }
 
 }
